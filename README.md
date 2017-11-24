@@ -4,26 +4,24 @@
 |------|----|-------|
 |body|text|null:false|
 |image|string|null:false|
-|group_id|integer|null:false, foreign_key: ture|
-|user_id|integer|null:false, foreign_key: true|
+|group_id|references:group|null:false, foreign_key: ture|
+|user_id|references:user|null:false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :group
-- belongs_to :member
 
 
-## membersテーブル
+## membersテーブル(中間テーブル)
 
 |Column|Type|Option|
 |------|----|------|
-|group_id|integer|null:false, foreign_key|
-|user_id|integer|null:false, foreign_key:  true|
+|group_id|references:group|null:false, foreign_key|
+|user_id|references:user|null:false, foreign_key:  true|
 
 ### Asociation
-- has_one :users
+- has_one :user
 - belongs_to :group
-- has_many :messages
 
 
 ## usersテーブル
@@ -31,12 +29,10 @@
 |Column|Type|Option|index|
 |------|----|------|-----|
 |name|stirng|null: false|unique: true|
-|group_id|integer|null:false, foreign_key:  true|
-|member_id|integer|null:false, foreign_key: true|
 
 ### Association
 - has_many :messages
-- has_one :members
+- has_one :member
 
 
 ## groupsテーブル
@@ -44,8 +40,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |date|integer|null:false|
-|user_id|integer|null:false, foreign_key: true|
-|member_id|integer|null:false, foreign_key: true|
 
 ### Association
 - has_many :messages
