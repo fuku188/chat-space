@@ -10,6 +10,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :group
+- belongs_to :member
 
 
 ## membersテーブル
@@ -20,21 +21,22 @@
 |user_id|integer|null:false, foreign_key:  true|
 
 ### Asociation
-- belongs_to :user
+- has_one :users
 - belongs_to :group
+- has_many :messages
 
 
 ## usersテーブル
 
-|Column|Type|Option|
-|------|----|------|
-|name|stirng|null:false|
+|Column|Type|Option|index|
+|------|----|------|-----|
+|name|stirng|null: false|unique: true|
 |group_id|integer|null:false, foreign_key:  true|
 |member_id|integer|null:false, foreign_key: true|
 
 ### Association
 - has_many :messages
-- has_many :members
+- has_one :members
 
 
 ## groupsテーブル
