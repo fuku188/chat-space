@@ -1,47 +1,24 @@
-## messagesテーブル
+# README
 
-|Column|Type|Options|
-|------|----|-------|
-|body|text|null:false|
-|image|string|null:false|
-|group_id|references:group|null:false, foreign_key: ture|
-|user_id|references:user|null:false, foreign_key: true|
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### Association
-- belongs_to :user
-- belongs_to :group
+Things you may want to cover:
 
+* Ruby version
 
-## membersテーブル(中間テーブル)
+* System dependencies
 
-|Column|Type|Option|
-|------|----|------|
-|group_id|references:group|null:false, foreign_key|
-|user_id|references:user|null:false, foreign_key:  true|
+* Configuration
 
-### Asociation
-- has_one :user
-- belongs_to :group
+* Database creation
 
+* Database initialization
 
-## usersテーブル
+* How to run the test suite
 
-|Column|Type|Option|index|
-|------|----|------|-----|
-|name|stirng|null: false|unique: true|
+* Services (job queues, cache servers, search engines, etc.)
 
-### Association
-- has_many :messages
-- has_one :member
+* Deployment instructions
 
-
-## groupsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|date|integer|null:false|
-
-### Association
-- has_many :messages
-- has_many :members
-
+* ...
